@@ -5,7 +5,7 @@
 [![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-red.svg)](https://streamlit.io/)
 [![Pandas](https://img.shields.io/badge/ETL-Pandas-green.svg)](https://pandas.pydata.org/)
 
-## ![LINK](https://img.shields.io/badge/-Résumé_Exécutif-333?style=for-the-badge&logo=readme&logoColor=white)
+## ![LINK](https://img.shields.io/badge/-LINK-333?style=for-the-badge&logo=readme&logoColor=white)
 
 https://transactions-immobilieres-fr.streamlit.app/
 
