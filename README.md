@@ -1,79 +1,78 @@
-# 🏢 DVF Market Intelligence - Data Engineering Pipeline
+# 🏢 DVF Market Intelligence (Data Engineering & Analytics) — Immobilier Français
 
-![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
-![SQLite](https://img.shields.io/badge/Database-SQLite%20%2F%20MySQL-orange.svg)
-![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red.svg)
-![Pandas](https://img.shields.io/badge/Pandas-ETL-green.svg)
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
+[![SQLite](https://img.shields.io/badge/Database-SQLite-orange.svg)](https://www.sqlite.org/)
+[![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-red.svg)](https://streamlit.io/)
+[![Pandas](https://img.shields.io/badge/ETL-Pandas-green.svg)](https://pandas.pydata.org/)
 
-## 📌 Présentation du Projet
-Ce projet est un pipeline de bout-en-bout conçu pour traiter les données massives de l'immobilier français (**Demande de Valeur Foncière**). Il démontre une architecture complète allant de l'extraction brute jusqu'à la visualisation interactive.
+## ![Summary](https://img.shields.io/badge/-Résumé_Exécutif-333?style=for-the-badge)
 
-**Objectif** : Transformer un fichier CSV massif en une application analytique performante capable d'agréger plus de **1 million de transactions** en temps réel.
-
----
-
-## 🏗️ Architecture Technique & Pipeline ETL
-
-Le projet est structuré en plusieurs modules techniques pour une séparation claire des responsabilités :
-
-### 1. Ingestion & Nettoyage (ETL)
-- **Extraction** : Scripts automatisés pour récupérer les données DVF.
-- **Transformation** : Utilisation de `Pandas` avec lecture par **Chunks** (blocs de 100k lignes). Cette approche permet de traiter des fichiers de plusieurs Go sur une machine standard sans saturer la RAM.
-- **Data Quality** : Filtrage des transactions aberrantes, gestion des valeurs nulles, et normalisation des types (dates, surfaces).
-
-### 2. Stockage Multi-Environnement
-- **Développement (Local)** : Utilisation de **MySQL** pour une gestion robuste des relations et des performances SQL.
-- **Production (Hébergement)** : Migration vers **SQLite** pour une portabilité totale sur Streamlit Cloud. Un script d'export automatisé permet de synchroniser les données entre les deux environnements.
-
-### 3. Analyse & Visualisation
-- **Dashboard Streamlit** : Interface utilisateur premium avec injection CSS personnalisée.
-- **Visualisation dynamique** : Graphiques interactifs avec **Plotly** (Cartographie, Saisonnalité, Top Communes).
-- **Optimisation** : Agrégations réalisées directement par le moteur SQL pour minimiser le transfert de données vers l'application.
+Ce projet déploie un pipeline de **Data Engineering** de bout en bout pour traiter et analyser les données massives des transactions immobilières françaises (DVF). Le système assure l'extraction de plus de **3 millions de données brutes**, leur nettoyage automatisé et leur stockage dans une base **SQLite optimisée** pour le Cloud. Un dashboard interactif permet d'explorer les prix au m² et les volumes de ventes à travers toute la France avec une fluidité totale.
 
 ---
 
-## 📂 Structure du Repository (Simplifiée)
+## ![Business](https://img.shields.io/badge/-Problématique_Business-333?style=for-the-badge)
+
+L'accès aux données immobilières en France est public (data.gouv.fr), mais leur exploitation brute est complexe en raison de leur volume et de leur hétérogénéité. L'enjeu de ce projet est triple :
+1.  **Industrialisation des données** : Transformer des fichiers CSV massifs en une base de données relationnelle structurée.
+2.  **Transparence du Marché** : Permettre une analyse précise du prix au m² par département et par type de bien (Maison vs Appartement).
+3.  **Portabilité & Cloud** : Migrer d'une architecture lourde (MySQL) vers une solution **SQLite légère** pour un hébergement gratuit et performant sur Streamlit Cloud.
+
+---
+
+## ![Impact](https://img.shields.io/badge/-Résultats_&_Impact-333?style=for-the-badge)
+
+Le pipeline ETL a permis de raffiner le dataset pour ne garder que la donnée à haute valeur ajoutée :
+
+| Métrique | Données Brutes | Données Nettoyées (Prod) | Impact |
+| :--- | :---: | :---: | :---: |
+| **Volume de lignes** | 3 140 000 | **1 029 498** | -67% de bruit supprimé |
+| **Temps de chargement** | Plusieurs minutes | **< 2 secondes** | Dashboard instantané |
+| **Taille Base de Données** | ~600 Mo (CSV) | **99.8 Mo (SQLite)** | Stockage optimisé Cloud |
+
+**Insights Clés :**
+* **Qualité des données** : Suppression automatique des transactions aberrantes (prix < 1000€ ou surface < 5m²).
+* **Expertise Métier** : Calcul dynamique du prix au m² pondéré par le type de local et le nombre de pièces.
+* **Accessibilité** : Dashboard public accessible 24/7 avec une architecture "Zero-Server".
+
+---
+
+## ![Pipeline](https://img.shields.io/badge/-Méthodologie_&_Pipeline-333?style=for-the-badge)
+
+1.  **Ingestion par Chunks** : Lecture du fichier CSV par blocs de 100 000 lignes avec **Pandas** pour éviter la saturation de la RAM.
+2.  **ETL & Nettoyage** : 
+    * Normalisation des types de données et gestion des valeurs manquantes.
+    * Filtrage strict pour ne conserver que les ventes immobilières réelles (exclusion des échanges et donations).
+3.  **Stockage & Migration** : Transition réussie de MySQL vers **SQLite** pour une portabilité totale du projet sur GitHub.
+4.  **Visualisation** : Développement d'une UI premium sur **Streamlit** exploitant Plotly pour des graphiques multidimensionnels.
+
+---
+
+## ![Stack](https://img.shields.io/badge/-Skills_&_Stack_Technique-333?style=for-the-badge)
+
+* **Langages & Libs** : Python (Pandas, Numpy, SQLAlchemy).
+* **Base de données** : **SQLite** (Architecture portable), MySQL (Local Dev).
+* **Data Viz** : Streamlit, Plotly Express.
+* **DevOps** : GitHub Actions, Streamlit Cloud Hosting, Git LFS.
+
+---
+
+## ![Next](https://img.shields.io/badge/-Prochaines_Étapes_&_Limites-333?style=for-the-badge)
+
+* **Géolocalisation** : Intégration de cartes Mapbox détaillées à l'échelle de la rue.
+* **Machine Learning** : Prédire l'évolution des prix au m² pour 2026 via des modèles de séries temporelles.
+* **Limites** : Le dataset dépend de la fréquence de mise à jour de data.gouv.fr (tous les 6 mois).
+
+---
+
+## ![Install](https://img.shields.io/badge/-Installation_et_Utilisation-333?style=for-the-badge)
 
 ```bash
-├── dashboard/          # Point d'entrée de l'application Streamlit
-├── data/               # Base de données SQLite (dvf_data.db)
-├── scripts/            # Utilitaires (Migration, Exports)
-├── src/                # Code source du pipeline technique
-│   ├── ingestion/      # Scripts de chargement MySQL
-│   ├── transformation/ # Logique de nettoyage des données
-│   ├── database/       # Gestion des connexions (Dual MySQL/SQLite)
-│   └── analysis/       # Requêtes SQL analytiques
-└── requirements.txt    # Dépendances du projet
-```
-
----
-
-## 🚀 Installation et Utilisation
-
-### 1. Prérequis
-- Python 3.9+
-- Pip
-
-### 2. Installation
-```bash
-# Cloner le projet
-git clone <votre-repo>
-cd dvm_imi_pipeline
-
-# Installer les dépendances
+# Installation
+git clone https://github.com/AbdelkrimAKKAL/transactions_immobilieres_francaises.git
+cd transactions_immobilieres_francaises
 pip install -r requirements.txt
-```
 
-### 3. Lancer le Dashboard
-Le projet est configuré pour utiliser automatiquement la base de données SQLite fournie par défaut.
-```bash
+# Lancer le Dashboard localement
 streamlit run dashboard/app.py
 ```
-
----
-
-## 💡 Concepts présentés lors des entretiens
-- **Gestion de la Mémoire** : Traitement par Chunks avec Pandas.
-- **Architecture ORM** : Utilisation de SQLAlchemy pour une flexibilité MySQL/SQLite.
-- **Déploiement Cloud** : Stratégie de portabilité de base de données pour l'hébergement public.
-- **Design UI/UX** : Création d'un dashboard analytique intuitif et épuré.
