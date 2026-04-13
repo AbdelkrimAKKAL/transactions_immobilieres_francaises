@@ -1,0 +1,19 @@
+# Données locales
+data/*.csv
+data/*.gz
+!data/dvf_data.db
+
+# Environnement virtuel et configuration
+.env
+venv/
+env/
+.venv/
+
+# Caches et fichiers générés
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+
+
+explication.txt
