@@ -5,6 +5,10 @@
 [![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-red.svg)](https://streamlit.io/)
 [![Pandas](https://img.shields.io/badge/ETL-Pandas-green.svg)](https://pandas.pydata.org/)
 
+## ![LINK](https://img.shields.io/badge/-Résumé_Exécutif-333?style=for-the-badge&logo=readme&logoColor=white)
+
+https://transactions-immobilieres-fr.streamlit.app/
+
 ## ![Summary](https://img.shields.io/badge/-Résumé_Exécutif-333?style=for-the-badge&logo=readme&logoColor=white)
 
 Ce projet déploie un pipeline de **Data Engineering** de bout en bout pour traiter et analyser les données massives des transactions immobilières françaises (DVF). Le système assure l'extraction de plus de **3 millions de données brutes**, leur nettoyage automatisé et leur stockage dans une base **SQLite optimisée** pour le Cloud. Un dashboard interactif permet d'explorer les prix au m² et les volumes de ventes à travers toute la France avec une fluidité totale.
@@ -16,7 +20,7 @@ Ce projet déploie un pipeline de **Data Engineering** de bout en bout pour trai
 L'accès aux données immobilières en France est public (data.gouv.fr), mais leur exploitation brute est complexe en raison de leur volume et de leur hétérogénéité. L'enjeu de ce projet est triple :
 1.  **Industrialisation des données** : Transformer des fichiers CSV massifs en une base de données relationnelle structurée.
 2.  **Transparence du Marché** : Permettre une analyse précise du prix au m² par département et par type de bien (Maison vs Appartement).
-3.  **Portabilité & Cloud** : Migrer d'une architecture lourde (MySQL) vers une solution **SQLite légère** pour un hébergement gratuit et performant sur Streamlit Cloud.
+
 
 ---
 
